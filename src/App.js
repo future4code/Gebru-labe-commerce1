@@ -17,7 +17,7 @@ import ImageXuxa from './img/XUXA.jpg'
 
 const AppContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 2fr 3fr 1fr;
   padding: 15px;
   margin: 0;
 `
