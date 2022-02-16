@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header'
 import styled from 'styled-components';
 import {Home} from './components/Home/Home'
 
@@ -90,6 +91,7 @@ class App extends React.Component {
   render () {
   return (
     <AppContainer>
+       <Header />
         <Home    
           products={products}
           minFilter={this.state.minFilter}
