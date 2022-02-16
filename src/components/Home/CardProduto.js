@@ -4,21 +4,21 @@ import styled from 'styled-components';
 const MediaBox = styled.div `
     display: flex;
     flex-direction: column;
-    border: 2px solid DodgerBlue;
+    border: 2px solid #BA55D3;
     border-radius: 10px;
 `
 const AppToCard = styled.button`
     align-self: center;
     margin-top: 8px;
     margin-bottom: 16px;
-    background-color: DodgerBlue;
+    background-color: #BA55D3;
     border-color: transparent transparent #fff transparent;
     color: white;
     border-radius: 10px;
 `
 const Title = styled.div`
     text-align: center;
-    background-color: DodgerBlue;
+    background-color: #BA55D3;
     color: white;
 
 `
@@ -35,7 +35,7 @@ const ContainerDiv = styled.div`
 export class CardProduto extends React.Component {
 
     render(){
-        const product = this.props.listaProdutos
+        const product = this.props.product
         return (<ContainerDiv>
                 <MediaBox>
                     <ImgContainer src={product.foto} alt={product.nome} width="170" height="200"/>
