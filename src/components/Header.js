@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '../imgsHeader/3902021.png';
-import Lupa from '../imgsHeader/lupa.png';
-import Login from '../imgsHeader/iconelogin.png';
+import Logo from '../img/3902021.png';
+import Lupa from '../img/lupa.png';
+import Login from '../img/iconelogin.png';
 
 const StyledHeader = styled.header`
     height: 20vh;

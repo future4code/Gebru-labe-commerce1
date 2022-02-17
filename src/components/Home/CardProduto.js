@@ -42,16 +42,19 @@ const ContainerDiv = styled.div`
 
 export class CardProduto extends React.Component {
 
+    addProduct = () => {
+        console.log("Adicionei produto")
+    }
+
+
     render(){
         const product = this.props.product
         return (<ContainerDiv>
                 <MediaBox>
                     <ImgContainer src={product.foto} alt={product.nome} width="170" height="200"/>
                     <Title><b><i>{product.nome}</i></b></Title>
-                    <Cost><b>R${product.preco},00</b></Cost>
-                    <AppToCard>
-                        Adicionar ao carrinho
-                    </AppToCard>
+                    <Cost><b>R$ {product.preco},00</b></Cost>
+                    <AppToCard onClick={this.addProduct}>Adicionar ao carrinho</AppToCard>
                 </MediaBox>
             </ContainerDiv>
         )}
