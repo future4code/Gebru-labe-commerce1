@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+
 const StyledCarrinho = styled.nav`
     width: 50%;
     height: 70vh;
@@ -9,15 +10,18 @@ const StyledCarrinho = styled.nav`
 
 `;
 
+
+
 class Carrinho extends React.Component {
     
-    
   
+    
     render() {
       
         return (
           <StyledCarrinho>
-            <p>Carrinho</p>
+             <p>Carrinho</p>
+             <p>Valor total:</p>
           </StyledCarrinho>
         )
       }

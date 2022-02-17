@@ -70,8 +70,8 @@ class Header extends React.Component {
     render () {
 
         return (
-            <StyledHeader>
-                <StyledLogo src= {Logo} alt="Logo da SpaceBenu" />
+            <StyledHeader> <StyledLogo src= {Logo} alt="Logo da SpaceBenu" />
+               
                 <StyledNomeLoja>SpaceBenu</StyledNomeLoja>
                 <StyledInput placeholder='O que você tá procurando?'/>
                 <StyledButtonSearch type='button'><StyledLupa src={Lupa} /></StyledButtonSearch>
