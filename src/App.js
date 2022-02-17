@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import {Home} from './components/Home/Home'
+import Carrinho from './components/Home/Carrinho';
 
 
 import ImageAttackBall from './img/ATTACK.jpg'
@@ -15,13 +16,17 @@ import ImageGunship from './img/GUNSHIP.jpg'
 import ImageMilllennium from './img/MILLENNIUM.jpg'
 import ImageXuxa from './img/XUXA.jpg'
 
-
 const AppContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
   padding: 15px;
   margin: 0;
 `
+
+const StyledContainer = styled.div`
+  display: flex;
+`
+
 const products = [
   {
     id: 1,
@@ -90,15 +95,21 @@ class App extends React.Component {
   
   render () {
   return (
-    <AppContainer>
-       <Header />
-        <Home    
-          products={products}
-          minFilter={this.state.minFilter}
-          maxFilter={this.state.maxFilter}
-          nameFilter={this.state.nameFilter}
-          />
-      </AppContainer>
+    <div>
+      <Header />
+        <StyledContainer>
+          <AppContainer>
+            <Home    
+            products={products}
+            minFilter={this.state.minFilter}
+            maxFilter={this.state.maxFilter}
+            nameFilter={this.state.nameFilter}
+            />
+          </AppContainer>
+          <Carrinho />
+        </StyledContainer>
+      
+    </div>
     );
   }
 }

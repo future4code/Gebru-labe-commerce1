@@ -42,17 +42,35 @@ const ContainerDiv = styled.div`
 
 export class CardProduto extends React.Component {
 
+    
+    state = {
+        quantidade: 0,
+        descrição: "",
+        valorTotal: "",
+    
+    }
+        
+      addProduct = () => {
+        console.log("Adicionei produto")
+    
+        const somaQuantidades = this.state.quantidade + 1
+        // const descricaoComprados = this.state.descrição
+    
+        this.setState({quantidade: somaQuantidades})
+        // this.setState({descrição: descricaoComprados})
+    
+      }   
+
     render(){
         const product = this.props.product
         return (<ContainerDiv>
                 <MediaBox>
                     <ImgContainer src={product.foto} alt={product.nome} width="170" height="200"/>
                     <Title><b><i>{product.nome}</i></b></Title>
-                    <Cost><b>R${product.preco},00</b></Cost>
-                    <AppToCard>
-                        Adicionar ao carrinho
-                    </AppToCard>
+                    <Cost><b>R$ {product.preco},00</b></Cost>
+                    <AppToCard onClick={this.addProduct}>Adicionar ao carrinho</AppToCard>
                 </MediaBox>
+                <p>{this.state.quantidade}</p>
             </ContainerDiv>
         )}
 }

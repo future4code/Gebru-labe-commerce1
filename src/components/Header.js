@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '../imgsHeader/3902021.png';
-import Lupa from '../imgsHeader/lupa.png';
-import Login from '../imgsHeader/iconelogin.png';
+import Logo from '../img/3902021.png';
+import Lupa from '../img/lupa.png';
+import Login from '../img/iconelogin.png';
 
 const StyledHeader = styled.header`
     height: 20vh;
@@ -70,8 +70,8 @@ class Header extends React.Component {
     render () {
 
         return (
-            <StyledHeader>
-                <StyledLogo src= {Logo} alt="Logo da SpaceBenu" />
+            <StyledHeader> <StyledLogo src= {Logo} alt="Logo da SpaceBenu" />
+               
                 <StyledNomeLoja>SpaceBenu</StyledNomeLoja>
                 <StyledInput placeholder='O que você tá procurando?'/>
                 <StyledButtonSearch type='button'><StyledLupa src={Lupa} /></StyledButtonSearch>
