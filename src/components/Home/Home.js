@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {CardProduto} from './CardProduto'
+import CardProduto from './CardProduto'
 
 const HomeContainer = styled.div`
     display: flex;
@@ -8,7 +8,7 @@ const HomeContainer = styled.div`
     align-items: center;
     height: 60px;
     margin-bottom: -80px;
-    background-color: DodgerBlue;
+    background-color: #BA55D3;
     margin-right: 20px;
     margin-left: 20px;
     border-radius: 10px;
@@ -29,7 +29,7 @@ const ProductQuantity = styled.p`
     color: white;
 `
 const SelectContainer = styled.select`
-  background-color: DodgerBlue;
+  background-color: #BA55D3;
   color: white;
   padding: 6px 10px;
   border: 1px solid white;
