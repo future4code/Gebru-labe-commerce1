@@ -4,6 +4,13 @@ import styled from 'styled-components';
 const MediaBox = styled.div `
     display: flex;
     flex-direction: column;
+    border: 2px solid #BA55D3;
+    border-radius: 10px;
+`
+const AppToCard = styled.button`
+    align-self: center;
+    margin-top: 8px;
+    margin-bottom: 16px;
     columns: 2fr;
     border: 4px solid #BA55D3;
     border-radius: 5px;
@@ -40,7 +47,7 @@ const ImgContainer = styled.img`
 const ContainerDiv = styled.div`
 `
 
-export class CardProduto extends React.Component {
+export default class CardProduto extends React.Component {
 
     
     state = {
@@ -74,4 +81,3 @@ export class CardProduto extends React.Component {
             </ContainerDiv>
         )}
 }
-

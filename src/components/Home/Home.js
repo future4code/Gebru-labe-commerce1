@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import {CardProduto} from './CardProduto'
+import CardProduto from './CardProduto'
 
 const HomeContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-    margin-bottom: -90px;
+    height: 60px;
+    margin-bottom: -80px;
     background-color: #BA55D3;
     margin-right: 20px;
     margin-left: 20px;
