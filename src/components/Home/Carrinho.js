@@ -14,17 +14,30 @@ const StyledCarrinho = styled.nav`
 
 class Carrinho extends React.Component {
     
-  
-    
-    render() {
-      
+  render() {
+
+    const itensDoCarrinho =
+      this.props.carrinho &&
+      this.props.carrinho.map((item) => {
         return (
-          <StyledCarrinho>
-             <p>Carrinho</p>
-             <p>Valor total:</p>
-          </StyledCarrinho>
-        )
-      }
+          <Itens
+            key={item.id}
+            quantidade={item.quantidade}
+            nome={item.name}
+            onClick={() => this.props.removerItemDoCarrinho(item)}
+          />
+        );
+      });
+
+    
+    return (
+      <StyledCarrinho>
+        <p>Carrinho</p>
+        <p>{itensDoCarrinho} </p>
+        <p>Valor total: R$ {this.props.valorTotal},00</p>
+      </StyledCarrinho>
+    )
+  }
 }
   
   export default Carrinho;

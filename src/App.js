@@ -96,6 +96,7 @@ const products = [
     sortParameter:"",
 }
 
+
 updateQuery = (ev) =>{
   this.setState({
       query:ev.target.value
@@ -169,9 +170,14 @@ render(){
             minFilter={this.state.minFilter}
             maxFilter={this.state.maxFilter}
             nameFilter={this.state.nameFilter}
+            addProduct={this.addProduct}
             />
           </AppContainer>
-          <Carrinho />
+          <Carrinho
+          carrinho={this.state.productsInCart}
+          valorTotal={this.state.valorTotal}
+          removerItemDoCarrinho={this.removerItemDoCarrinho}
+           />
         </StyledContainer>
            <Footer/>
     </div>
