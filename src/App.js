@@ -8,7 +8,6 @@ import Filtro from './components/Filtro/Filtro'
 import CardProduto from './components/Home/CardProduto'
 import Carrinho from './components/Home/Carrinho';
 
-import ImageAttackBall from './img/ATTACK.jpg'
 import ImageDeathStar from './img/DEATH.jpg'
 import ImageDestroyer from './img/DESTROYER.jpg'
 import ImageDiscoveryNasa from './img/DISCOVERY.jpg'
@@ -31,6 +30,7 @@ const AppContainer = styled.div`
   grid-template-columns: 2fr 3fr 1fr;
   padding: 15px;
   margin: 0;
+  background-color: #5F9EA0;
 `
 
 const StyledContainer = styled.div`
@@ -46,55 +46,48 @@ const products = [
   },
 {
   id: 2,
-  nome: "ATTACK BALL",
-  preco: 130.000,
-  foto: ImageAttackBall,
-},
-{
-  id: 3,
   nome: "DEATH STAR",
   preco: 900.000,
   foto:ImageDeathStar,
 },
 {
-  id: 4,
+  id: 3,
   nome: "DESTROYER IMPERIAL",
   preco: 300.000,
   foto: ImageDestroyer,
 },
 {
-  id: 5,
+  id: 4,
   nome: "DISCOVERY NASA",
   preco: 550.000,
   foto: ImageDiscoveryNasa,
 },
 {
-  id: 6,
+  id: 5,
   nome: "ENDURANCE",
   preco: 850.000,
   foto: ImageEndurance,
 },
 {
-  id: 7,
+  id: 6,
   nome: "ENTERPRISE NCC",
   preco: 750.000,
   foto: ImageEnterprise,
 },
 {
-  id: 8,
+  id: 7,
   nome: "GUNSHIP",
   preco: 350.000,
   foto: ImageGunship,
 },
 {
-  id: 9,
+  id: 8,
   nome: " MILLENIUM FALCON",
   preco: 999.000,
   foto: ImageMilllennium,
 }
 ];
-
-export default class App extends React.Component {
+ class App extends React.Component {
   state= {
     produtos: products,
     query:"",
@@ -131,7 +124,6 @@ updateOrder = (ev) => {
  })
 }
 
-
 render(){
    
 
@@ -159,14 +151,7 @@ render(){
     <div>
       <Header />
         <StyledContainer>
-          <AppContainer>
-            <Home    
-            products={products}
-            minFilter={this.state.minFilter}
-            maxFilter={this.state.maxFilter}
-            nameFilter={this.state.nameFilter}
-            />
-              
+          <AppContainer>              
                <Filtro
       query={this.state.query}
          updateQuery={this.updateQuery}
@@ -179,6 +164,12 @@ render(){
          sortingParameter={this.state.sortingParameter}
          order={this.state.order} 
          />
+          <Home    
+            products={products}
+            minFilter={this.state.minFilter}
+            maxFilter={this.state.maxFilter}
+            nameFilter={this.state.nameFilter}
+            />
           </AppContainer>
           <Carrinho />
         </StyledContainer>

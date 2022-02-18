@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const FiltersContainer = styled.div`
 display:flex;
 margin-left:0;
-border: 2px solid #BA55D3;
+border: 2px solid #1a1e2c;
 flex-direction: column;
 width:20vw;
 height: fit-content;
@@ -12,7 +12,6 @@ border-radius: 10px;
 gap:10px;
 padding:3px;
 `
-
 
 export default function Filters(props) {
   const onchangeQuery = (ev) => {
@@ -52,16 +51,7 @@ export default function Filters(props) {
          </select>
       </span>
 
-      <select
-         name="order"
-         value={props.order}
-         onChange={props.updateOrder}
-      >
-         <option value={1}>Crescente</option>
-         <option value={-1}>Decrescente</option>
-
-      </select>
-
    </FiltersContainer>
 
 }
+

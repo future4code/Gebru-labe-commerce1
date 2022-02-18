@@ -4,37 +4,34 @@ import styled from 'styled-components';
 const MediaBox = styled.div `
     display: flex;
     flex-direction: column;
-    border: 2px solid #BA55D3;
+    border: 2px solid #1a1e2c;
     border-radius: 10px;
 `
 const AppToCard = styled.button`
     align-self: center;
     margin-top: 8px;
-    margin-bottom: 16px;
     columns: 2fr;
-    border: 4px solid #BA55D3;
+    border: 4px solid #1a1e2c;
     border-radius: 5px;
-    height: 230px;
-    width: 120px;
-    margin-bottom: 25px;
-`
-const AppToCard = styled.button`
-    align-self: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: #BA55D3;
-    border-color: transparent transparent #fff transparent;
+    background-color: #1a1e2c;
     color: white;
     border-radius: 10px;
+    height: 50px;
+    width: 120px;
+    margin-bottom: 25px;
+    font-family: monospace;
 `
 const Title = styled.div`
-    text-align: center;
-    background-color: #BA55D3;
+    font-family: monospace;
+text-align: center;
+    background-color: #1a1e2c;
     color: white;
 
 `
 const Cost = styled.div`
     text-align: center;
+    font-family: monospace;
+    color: #1a1e2c;
     
 `
 const ImgContainer = styled.img`
