@@ -83,7 +83,8 @@ export class Home extends React.Component {
                 <Container>
                     {filteredAndOrderedList.map((product)=> {
                         return <CardProduto
-                        product={product} addproduct={this.props.addProduct}
+                        product={product}
+                        addproduct={this.props.addProduct}
                        />
                     })}
                 </Container>
