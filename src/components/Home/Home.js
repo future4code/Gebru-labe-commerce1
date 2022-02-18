@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import {CardProduto} from './CardProduto'
+import CardProduto from './CardProduto'
 
 const HomeContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-    margin-bottom: -90px;
-    background-color: #BA55D3;
+    height: 60px;
+    margin-bottom: -80px;
+    background-color: #1a1e2c;
     margin-right: 20px;
     margin-left: 20px;
     border-radius: 10px;
@@ -30,7 +30,7 @@ const ProductQuantity = styled.p`
     color: white;
 `
 const SelectContainer = styled.select`
-  background-color: #BA55D3;
+  background-color: #1a1e2c;
   color: white;
   padding: 6px 10px;
   border: 1px solid white;
@@ -92,3 +92,4 @@ export class Home extends React.Component {
         );
     }
 }
+
