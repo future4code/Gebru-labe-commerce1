@@ -3,10 +3,13 @@ import styled from 'styled-components'
 
 
 const StyledCarrinho = styled.nav`
-    width: 50%;
+    width: 30%;
     height: 70vh;
     margin: 15px 50px;
-    border: double #a8bd9b;
+    border: 2px solid #1a1e2c;
+    border-radius: 10px;
+    background-color: white;
+    
 
 `;
 
