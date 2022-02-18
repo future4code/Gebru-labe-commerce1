@@ -35,6 +35,7 @@ const AppContainer = styled.div`
 
 const StyledContainer = styled.div`
   display: flex;
+  background-color: #5F9EA0;
 `
 
 const products = [
@@ -87,7 +88,9 @@ const products = [
   foto: ImageMilllennium,
 }
 ];
- class App extends React.Component {
+ 
+
+class App extends React.Component {
   state= {
     produtos: products,
     query:"",
