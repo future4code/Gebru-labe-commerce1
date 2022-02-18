@@ -90,8 +90,46 @@ class App extends React.Component {
     minFilter: '',
     maxFilter: '',
     nameFilter: '',
-    productsInCart: []
+    productsInCart: [],
+    valorTotal: 0,
+
   }
+    
+  addProduct = (product) => {
+    const productInCart = this.state.productsInCart.filter((item) => {
+      if (item.id === product.id) {
+        return item;
+      }else{
+        return false
+      }
+    });
+
+    if (productInCart.length === 0) {
+      product.quantidade = 1;
+      const newCart = [product, ...this.state.productsInCart];
+      
+      this.setState({productInCart: newCart});
+    } else {
+      const newCart = this.state.productsInCart.map((item) => {
+        if (product.id === item.id) {
+          return { ...item, quantidade: item.quantidade + 1 };
+        } else {
+          return item;
+        }
+      });
+
+      this.setState({
+        productInCart: newCart,
+      });
+    }
+    this.adicionarValorTotal(product.preco);
+  };
+
+  adicionarValorTotal = (valor) => {
+    this.setState({
+      valorTotal: this.state.valorTotal + valor
+    });
+  };
   
   render () {
   return (
@@ -104,9 +142,14 @@ class App extends React.Component {
             minFilter={this.state.minFilter}
             maxFilter={this.state.maxFilter}
             nameFilter={this.state.nameFilter}
+            addProduct={this.addProduct}
             />
           </AppContainer>
-          <Carrinho />
+          <Carrinho
+          carrinho={this.state.productsInCart}
+          valorTotal={this.state.valorTotal}
+          removerItemDoCarrinho={this.removerItemDoCarrinho}
+           />
         </StyledContainer>
       
     </div>
