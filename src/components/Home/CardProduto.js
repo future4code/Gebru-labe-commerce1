@@ -11,6 +11,17 @@ const AppToCard = styled.button`
     align-self: center;
     margin-top: 8px;
     margin-bottom: 16px;
+    columns: 2fr;
+    border: 4px solid #BA55D3;
+    border-radius: 5px;
+    height: 230px;
+    width: 120px;
+    margin-bottom: 25px;
+`
+const AppToCard = styled.button`
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
     background-color: #BA55D3;
     border-color: transparent transparent #fff transparent;
     color: white;
@@ -27,12 +38,35 @@ const Cost = styled.div`
     
 `
 const ImgContainer = styled.img`
-    width: 100%;
+ max-width: 100%;
+ max-height: 100%;
+ height: 200px;
+ width: 200px;
+ align-items:center;
 `
 const ContainerDiv = styled.div`
 `
 
 export default class CardProduto extends React.Component {
+
+    
+    state = {
+        quantidade: 0,
+        descrição: "",
+        valorTotal: "",
+    
+    }
+        
+      addProduct = () => {
+        console.log("Adicionei produto")
+    
+        const somaQuantidades = this.state.quantidade + 1
+        // const descricaoComprados = this.state.descrição
+    
+        this.setState({quantidade: somaQuantidades})
+        // this.setState({descrição: descricaoComprados})
+    
+      }   
 
     render(){
         const product = this.props.product
@@ -40,11 +74,10 @@ export default class CardProduto extends React.Component {
                 <MediaBox>
                     <ImgContainer src={product.foto} alt={product.nome} width="170" height="200"/>
                     <Title><b><i>{product.nome}</i></b></Title>
-                    <Cost><b>R${product.preco},00</b></Cost>
-                    <AppToCard>
-                        Adicionar ao carrinho
-                    </AppToCard>
+                    <Cost><b>R$ {product.preco},00</b></Cost>
+                    <AppToCard onClick={this.addProduct}>Adicionar ao carrinho</AppToCard>
                 </MediaBox>
+                <p>{this.state.quantidade}</p>
             </ContainerDiv>
         )}
 }

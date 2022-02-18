@@ -22,6 +22,7 @@ const Container = styled.section`
 `
 const InputContainer = styled.div`    
     margin-right: 20px;
+    margin-left: 10px;
     
 `
 const ProductQuantity = styled.p`   
@@ -34,6 +35,7 @@ const SelectContainer = styled.select`
   padding: 6px 10px;
   border: 1px solid white;
   border-radius: 10px;
+  margin-left: 10px;
 `
 const OptionContainer = styled.option`
   background-color: rgba(0, 0, 0, 0.1);

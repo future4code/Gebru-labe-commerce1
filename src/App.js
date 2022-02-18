@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import styled from 'styled-components';
+import Header from './components/Header'
+import styled from 'styled-components'
 import {Home} from './components/Home/Home'
 import Footer from './components/Footer/Footer'
 import Filtro from './components/Filtro/Filtro'
 import CardProduto from './components/Home/CardProduto'
-
+import Carrinho from './components/Home/Carrinho';
 
 import ImageAttackBall from './img/ATTACK.jpg'
 import ImageDeathStar from './img/DEATH.jpg'
@@ -27,10 +28,15 @@ const ListContainer = styled.div`
 `
 const AppContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 2fr 3fr 1fr;
   padding: 15px;
   margin: 0;
 `
+
+const StyledContainer = styled.div`
+  display: flex;
+`
+
 const products = [
   {
     id: 1,
@@ -148,19 +154,20 @@ render(){
  
          return < CardProduto key = {this.products.id} produto = {products} />
      })
-     
-     
-    
   
-    return (
-        <div>
-
-     {/* <Header /> */}
-      
-    
-    <AppContainer>
-
-        <Filtro
+     return (
+    <div>
+      <Header />
+        <StyledContainer>
+          <AppContainer>
+            <Home    
+            products={products}
+            minFilter={this.state.minFilter}
+            maxFilter={this.state.maxFilter}
+            nameFilter={this.state.nameFilter}
+            />
+              
+               <Filtro
       query={this.state.query}
          updateQuery={this.updateQuery}
          updateMinPrice={this.updateMinPrice}
@@ -172,17 +179,13 @@ render(){
          sortingParameter={this.state.sortingParameter}
          order={this.state.order} 
          />
-        <Home    
-          products={products}
-          minFilter={this.state.minFilter}
-          maxFilter={this.state.maxFilter}
-          nameFilter={this.state.nameFilter}
-           />
-          
-      
-      </AppContainer>
-        <Footer/>
-        </div>
-    
- )}
-    }
+          </AppContainer>
+          <Carrinho />
+        </StyledContainer>
+           <Footer/>
+    </div>
+    );
+  }
+}
+
+export default App;
