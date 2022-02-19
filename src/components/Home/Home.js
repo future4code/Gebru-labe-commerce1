@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CardProduto from './CardProduto'
+import {CardProduto} from './CardProduto';
 
 const HomeContainer = styled.div`
     display: flex;
@@ -56,7 +56,7 @@ export class Home extends React.Component {
             .filter((product) =>  this.props.maxFilter? product.cost < this.props.maxFilter : true)
             .filter((product) => this.props.minFilter ? product.cost > this.props.minFilter : true)
             .filter((product) => this.props.nameFilter ? product.title.includes(this.props.nameFilter) : true)
-            .sort((a, b) => this.state.sort === "crescente" ? a.preco - b.preco : b.preco - a.preco)
+            .sort((a, b) => this.state.sort === "crescente" ? a.cost - b.cost : b.cost - a.cost)
     }
 
     onChangeSort = (event) => {
@@ -84,7 +84,7 @@ export class Home extends React.Component {
                     {filteredAndOrderedList.map((product)=> {
                         return <CardProduto
                         product={product}
-                        addproduct={this.props.addProduct}
+                        onAddProductToCart={this.props.onAddProductToCart}
                        />
                     })}
                 </Container>
@@ -92,4 +92,3 @@ export class Home extends React.Component {
         );
     }
 }
-

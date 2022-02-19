@@ -9,13 +9,11 @@ const StyledHeader = styled.header`
     background-color: #1a1e2c;
     display: flex;
     align-items: center;
-
 `;
 
 const StyledLogo = styled.img`
     width: 5vw;
     margin: 35px 10px 35px 45px;
-
 `;
 
 const StyledNomeLoja = styled.h2`

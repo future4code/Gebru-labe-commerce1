@@ -5,8 +5,7 @@ import styled from 'styled-components'
 import {Home} from './components/Home/Home'
 import Footer from './components/Footer/Footer'
 import Filtro from './components/Filtro/Filtro'
-import CardProduto from './components/Home/CardProduto'
-import Carrinho from './components/Home/Carrinho';
+import Carrinho from './components/Carrinho';
 
 import ImageDeathStar from './img/DEATH.jpg'
 import ImageDestroyer from './img/DESTROYER.jpg'
@@ -17,171 +16,152 @@ import ImageGunship from './img/GUNSHIP.jpg'
 import ImageMilllennium from './img/MILLENNIUM.jpg'
 import ImageXuxa from './img/XUXA.jpg'
 
-// const ListContainer = styled.div`
-//    width: 50%;
-//    height: 70vh;
-//    margin: 15px 50px;
-//    border:  1px double #a8bd9b;
-//    background-color: violet;
-  
-// `
+
 const AppContainer = styled.div`
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   padding: 15px;
   margin: 0;
-  background-color: #5F9EA0;
-`
-
-const StyledContainer = styled.div`
-  display: flex;
-  background-color: #5F9EA0;
+  background-color: #4682B4;
 `
 
 const products = [
   {
     id: 1,
-    nome: "NAVE DA XUXA",
-    preco: 999.000,
-    foto: ImageXuxa,
+    title: 'NAVE DA XUXA',
+    cost: 999,
+    image: ImageXuxa,
   },
 {
   id: 2,
-  nome: "DEATH STAR",
-  preco: 900.000,
-  foto:ImageDeathStar,
+  title: 'DEATH STAR',
+  cost: 900,
+  image:ImageDeathStar,
 },
 {
   id: 3,
-  nome: "DESTROYER IMPERIAL",
-  preco: 300.000,
-  foto: ImageDestroyer,
+  title: 'DESTROYER IMPERIAL',
+  cost: 900,
+  image: ImageDestroyer,
 },
 {
   id: 4,
-  nome: "DISCOVERY NASA",
-  preco: 550.000,
-  foto: ImageDiscoveryNasa,
+  title: 'DISCOVERY NASA',
+  cost: 550,
+  image: ImageDiscoveryNasa,
 },
 {
   id: 5,
-  nome: "ENDURANCE",
-  preco: 850.000,
-  foto: ImageEndurance,
+  title: 'ENDURANCE',
+  cost: 850,
+  image: ImageEndurance,
 },
 {
   id: 6,
-  nome: "ENTERPRISE NCC",
-  preco: 750.000,
-  foto: ImageEnterprise,
+  title: 'ENTERPRISE NCC',
+  cost: 750,
+  image: ImageEnterprise,
 },
 {
   id: 7,
-  nome: "GUNSHIP",
-  preco: 350.000,
-  foto: ImageGunship,
+  title: 'GUNSHIP',
+  cost: 350,
+  image: ImageGunship,
 },
 {
   id: 8,
-  nome: " MILLENIUM FALCON",
-  preco: 999.000,
-  foto: ImageMilllennium,
+  title: 'MILLENIUM FALCON',
+  cost: 999,
+  image: ImageMilllennium,
 }
-];
- 
+]
 
-class App extends React.Component {
-  state= {
-    produtos: products,
-    query:"",
-    minPrice:"",
-    maxPrice:"",
-    sortParameter:"",
-}
+export default class App extends React.Component {
+  state = {
+    quantity:0,
+    minFilter: '',
+    maxFilter: '',
+    nameFilter: '',
+    productsInCart: []
+  }
 
 
-updateQuery = (ev) =>{
-  this.setState({
-      query:ev.target.value
-  })
- }
-updateMinPrice = (ev) =>{
- this.setState({
-     minPrice:ev.target.value
- })
-}
-updateMaxPrice = (ev) =>{
- this.setState({
-     maxPrice:ev.target.value
- })
+  onChangeMinFilter = (event) => {
+    this.setState({minFilter: event.target.value})
+  }
 
-}
-updatesortingParameter = (ev) =>{
- this.setState({
+  onChangeMaxFilter = (event) => {
+    this.setState({maxFilter: event.target.value})
+  }
 
-     sortParameter:ev.target.value
- })
-}
-updateOrder = (ev) => {
- this.setState({
-    order: ev.target.value
- })
-}
+  onChangeTitleFilter = (event) => {
+    this.setState({nameFilter: event.target.value})
+  }
 
-render(){
-   
+  onAddProductToCart = (productId) => {
+    const productInCart = this.state.productsInCart.find(product => productId === product.id)
 
-     this.state.produtos
-     .filter(produto => {
-         return (
-          this.state.query && (produto.title.toLowerCase().includes(this.state.query.toLowerCase())||
-          
-          produto.description.toLowerCase().includes(this.state.query.toLowerCase()))
-         )
-     })
-     .filter(produtos =>{
-         return this.state.minPrice === "" || produtos.price >= this.state.minPrice;
-     })
-     .filter(produtos =>{
-         return this.state.maxPrice === "" || produtos.price <= this.state.maxPrice;
-     })
-     .map(produtos =>{
+    if(productInCart){
+      const newProductsInCart = this.state.productsInCart.map(product => {
+        if(productId === product.id) {
+          return{
+            ...product,
+            quantity: product.quantity + 1
+          }
+        }
+        return product
+      })
+      this.setState({productsInCart: newProductsInCart})
+    } else {
+      const productToAdd = products.find(product => productId === product.id)
+      const newProductsInCart = [...this.state.productsInCart, {...productToAdd, quantity: 1}]
 
- 
-         return < CardProduto key = {this.products.id} produto = {products} />
-     })
-  
-     return (
-    <div>
-      <Header />
-        <StyledContainer>
-          <AppContainer>              
-               <Filtro
-      query={this.state.query}
-         updateQuery={this.updateQuery}
-         updateMinPrice={this.updateMinPrice}
-         updateMaxPrice={this.updateMaxPrice}
-         updateSortingParameter={this.updateSortingParameter}
-         updateOrder={this.updateOrder}
-         minPrice={this.state.minPrice}
-         maxPrice={this.state.maxPrice}
-         sortingParameter={this.state.sortingParameter}
-         order={this.state.order} 
-         />
-          <Home    
-            products={products}
-            minFilter={this.state.minFilter}
-            maxFilter={this.state.maxFilter}
-            nameFilter={this.state.nameFilter}
-            addProduct={this.addProduct}
-            />
-          </AppContainer>
-          <Carrinho />
-        </StyledContainer>
-           <Footer/>
-    </div>
+      this.setState({productsInCart: newProductsInCart})
+    }
+  }
+
+  onRemoveProductFromCart = (productId) => {
+    const newProductsInCart = this.state.productsInCart.map((product) => {
+      if(product.id === productId) {
+        return {
+          ...product,
+          quantity: product.quantity - 1
+        }
+      }
+      return product
+    }).filter((product) => product.quantity > 0)
+
+    this.setState({productsInCart: newProductsInCart})
+  }
+
+  render() {
+    return (
+      <>
+      <Header/>
+      <AppContainer>
+        <Filtro 
+        maxFilter = {this.state.maxFilter}
+        minFilter = {this.state.minFilter}
+        nameFilter = {this.state.nameFilter}
+        onChangeMaxFilter = {this.onChangeMaxFilter}
+        onChangeMinFilter = {this.onChangeMinFilter}
+        onChangeTitleFilter = {this.onChangeTitleFilter}      
+        />
+        <Home    
+          products={products}
+          minFilter={this.state.minFilter}
+          maxFilter={this.state.maxFilter}
+          nameFilter={this.state.nameFilter}
+          onAddProductToCart={this.onAddProductToCart}/>
+        <Carrinho 
+          products={this.state.productsInCart}
+          onRemoveProductFromCart ={this.onRemoveProductFromCart}
+        /> 
+      </AppContainer>
+      <Footer/>
+      </>
     );
   }
 }
 
-export default App;
+
