@@ -84,7 +84,7 @@ export class Home extends React.Component {
                     {filteredAndOrderedList.map((product)=> {
                         return <CardProduto
                         product={product}
-                        addproduct={this.props.addProduct}
+                        onAddProductToCart={this.props.onAddProductToCart}
                        />
                     })}
                 </Container>

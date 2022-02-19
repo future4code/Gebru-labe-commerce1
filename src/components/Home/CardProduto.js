@@ -56,7 +56,7 @@ export default class CardProduto extends React.Component {
                     <ImgContainer src={product.foto} alt={product.nome} width="170" height="200"/>
                     <Title><b><i>{product.nome}</i></b></Title>
                     <Cost><b>R$ {product.preco},00</b></Cost>
-                    <AppToCard>Adicionar ao carrinho</AppToCard>
+                    <AppToCard onClick={() => this.props.onAddProductToCart(product.id)}>Adicionar ao carrinho</AppToCard>
                 </MediaBox>
                 <p></p>
             </ContainerDiv>

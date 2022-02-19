@@ -97,30 +97,32 @@ class App extends React.Component {
     minPrice:"",
     maxPrice:"",
     sortParameter:"",
+    productsInCart: []
 }
 
 
-updateQuery = (ev) =>{
+updateQuery = (ev) => {
   this.setState({
-      query:ev.target.value
+    query: ev.target.value
   })
- }
-updateMinPrice = (ev) =>{
- this.setState({
-     minPrice:ev.target.value
- })
 }
-updateMaxPrice = (ev) =>{
- this.setState({
-     maxPrice:ev.target.value
- })
 
+updateMinPrice = (ev) => {
+  this.setState({
+    minPrice: ev.target.value
+  })
 }
-updatesortingParameter = (ev) =>{
- this.setState({
 
-     sortParameter:ev.target.value
- })
+updateMaxPrice = (ev) => {
+  this.setState({
+     maxPrice: ev.target.value
+  })
+}
+
+updatesortingParameter = (ev) => {
+  this.setState({
+     sortParameter:  ev.target.value
+  })
 }
 updateOrder = (ev) => {
  this.setState({
@@ -128,7 +130,43 @@ updateOrder = (ev) => {
  })
 }
 
-render(){
+onAddProductToCart = (productId) => {
+  const productInCart = this.state.productsInCart.find(product => productId === product.id)
+
+  if(productInCart){
+    const newProductsInCart = this.state.productsInCart.map(product => {
+      if(productId === product.id) {
+        return{
+          ...product,
+          quantity: product.quantity + 1
+        }
+      }
+      return product
+    })
+    this.setState({productsInCart: newProductsInCart})
+  } else {
+    const productToAdd = products.find(product => productId === product.id)
+    const newProductsInCart = [...this.state.productsInCart, {...productToAdd, quantity: 1}]
+
+    this.setState({productsInCart: newProductsInCart})
+  }
+}
+
+onRemoveProductFromCart = (productId) => {
+  const newProductsInCart = this.state.productsInCart.map((product) => {
+    if(product.id === productId) {
+      return {
+        ...product,
+        quantity: product.quantity - 1
+      }
+    }
+    return product
+  }).filter((product) => product.quantity > 0)
+
+  this.setState({productsInCart: newProductsInCart})
+}
+
+render() {
    
 
      this.state.produtos
@@ -173,10 +211,13 @@ render(){
             minFilter={this.state.minFilter}
             maxFilter={this.state.maxFilter}
             nameFilter={this.state.nameFilter}
-            addProduct={this.addProduct}
+            onAddProductToCart={this.onAddProductToCart}
             />
           </AppContainer>
-          <Carrinho />
+          <Carrinho 
+          products={this.state.productsInCart}
+          onRemoveProductFromCart ={this.onRemoveProductFromCart}
+          />
         </StyledContainer>
            <Footer/>
     </div>

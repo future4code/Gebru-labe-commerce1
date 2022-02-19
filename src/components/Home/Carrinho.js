@@ -16,6 +16,14 @@ const StyledCarrinho = styled.nav`
 
 
 class Carrinho extends React.Component {
+
+  getTotalValue = () => {
+    let totalValue = 0
+    for(let product of this.props.products) {
+      totalValue += product.preco * product.quantity    
+    }
+    return totalValue
+}
     
   render() {
 
@@ -23,8 +31,15 @@ class Carrinho extends React.Component {
     return (
       <StyledCarrinho>
         <p>Carrinho</p>
-        <p></p>
-        <p>Valor total: R$,00</p>
+        {this.props.products.map(item => (
+          <div>
+            <p>{item.quantity}</p>
+            <p>{item.nome}</p>
+            <button onClick={()=>this.props.onRemoveProductFromCart(item.id)}> - </button>
+          </div>
+        ))
+        }
+          <div>Valor total: R$ {this.getTotalValue()},00 </div>
       </StyledCarrinho>
     )
   }
