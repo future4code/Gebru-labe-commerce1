@@ -17,14 +17,14 @@ import ImageGunship from './img/GUNSHIP.jpg'
 import ImageMilllennium from './img/MILLENNIUM.jpg'
 import ImageXuxa from './img/XUXA.jpg'
 
-const ListContainer = styled.div`
-   width: 50%;
-   height: 70vh;
-   margin: 15px 50px;
-   border:  1px double #a8bd9b;
-   background-color: violet;
+// const ListContainer = styled.div`
+//    width: 50%;
+//    height: 70vh;
+//    margin: 15px 50px;
+//    border:  1px double #a8bd9b;
+//    background-color: violet;
   
-`
+// `
 const AppContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
@@ -176,11 +176,7 @@ render(){
             addProduct={this.addProduct}
             />
           </AppContainer>
-          <Carrinho
-          carrinho={this.state.productsInCart}
-          valorTotal={this.state.valorTotal}
-          removerItemDoCarrinho={this.removerItemDoCarrinho}
-           />
+          <Carrinho />
         </StyledContainer>
            <Footer/>
     </div>
