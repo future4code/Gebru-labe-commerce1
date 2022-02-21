@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import Logo from '../img/3902021.png';
 import Lupa from '../img/lupa.png';
 import Login from '../img/iconelogin.png';
+import Icone from '../img/telescope.png';
+import Seta from '../img/seta.png';
+
 
 const StyledHeader = styled.header`
     height: 20vh;
@@ -74,6 +77,8 @@ class Header extends React.Component {
                 <StyledInput placeholder='O que você tá procurando?'/>
                 <StyledButtonSearch type='button'><StyledLupa src={Lupa} /></StyledButtonSearch>
                 <StyledButtonLogin type='button'> <StyledLogin src={Login} /> </StyledButtonLogin>
+                <StyledLogo src={Icone} />
+                <StyledLogo src={Seta} />
             </StyledHeader>
 
         )  
